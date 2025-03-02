@@ -59,7 +59,7 @@ export function HeroSection() {
                         className="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-2xl border-4 border-primary/20 shadow-xl"
                     >
                         <Image
-                            src="/photo.jpg"
+                            src="portfolio/photo.jpg"
                             alt="Guillaume Dehez"
                             fill
                             style={{ objectFit: "cover" }}
