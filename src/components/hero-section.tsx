@@ -26,7 +26,7 @@ export function HeroSection() {
                         </p>
 
                         <p className="mt-4 text-lg text-muted-foreground max-w-[600px] text-center md:text-left">
-                            Je suis un étudiant en première année d'ingénierie de 18 ans avec une passion pour le développement de logiciels et la cybersécurité. Je me spécialise en programmation C++ et vise à poursuivre une carrière en reverse engineering.
+                            Je suis un étudiant en première année d&apos;ingénierie de 18 ans avec une passion pour le développement de logiciels et la cybersécurité. Je me spécialise en programmation C++ et vise à poursuivre une carrière en reverse engineering.
                         </p>
 
                         <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">

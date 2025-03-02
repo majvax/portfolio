@@ -16,7 +16,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { useState, useRef } from "react"
-import { Mail, MessageSquare, Send } from "lucide-react"
+import { /*Mail, MessageSquare,*/ Send } from "lucide-react"
 
 // Form validation schema
 const formSchema = z.object({
@@ -159,7 +159,7 @@ export function ContactSection() {
                                     </div>
                                     <h3 className="text-xl font-bold">Message Sent!</h3>
                                     <p className="text-muted-foreground">
-                                        Thank you for reaching out. I'll get back to you as soon as possible.
+                                        Thank you for reaching out. I&apos;ll get back to you as soon as possible.
                                     </p>
                                     <Button
                                         variant="outline"
