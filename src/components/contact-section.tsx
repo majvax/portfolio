@@ -51,7 +51,7 @@ export function ContactSection() {
         setIsSubmitting(true)
 
         // In a real application, you would send this data to your backend
-       if (formRef.current) {
+        if (formRef.current) {
             fetch(
                 "https://formsubmit.co/ajax/849735bb5cbeaf9f295df4bb1a48664e", {
                 method: "POST",
@@ -61,19 +61,19 @@ export function ContactSection() {
                 },
                 body: JSON.stringify(values),
             }
-        ).then((response) => {
-            if (response.ok) {
+            ).then((response) => {
+                if (response.ok) {
+                    setIsSubmitting(false)
+                    setIsSubmitted(true)
+                    form.reset()
+                } else {
+                    throw new Error("An error occurred. Please try again.")
+                }
+            }).catch((error) => {
                 setIsSubmitting(false)
-                setIsSubmitted(true)
-                form.reset()
-            } else {
-                throw new Error("An error occurred. Please try again.")
-            }
-        }).catch((error) => {
-            setIsSubmitting(false)
-            alert(error.message)
-        });
-      }
+                alert(error.message)
+            });
+        }
 
 
 
@@ -175,7 +175,7 @@ export function ContactSection() {
                                     ref={formRef}
                                     onSubmit={form.handleSubmit(onSubmit)}
                                     className="rounded-lg border bg-card p-6 shadow-sm space-y-4">
-                                    
+
                                     <input type="text" name="_honey" style={{ display: "none" }} />
                                     <input type="hidden" name="_next" value="" />
                                     <input type="hidden" name="_captcha" value="false" />

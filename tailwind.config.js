@@ -29,5 +29,4 @@ module.exports = {
             // Your other theme extensions
         },
     },
-    plugins: [require("tailwindcss-animate")],
 };

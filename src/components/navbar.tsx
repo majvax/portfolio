@@ -6,7 +6,7 @@ import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 
 const NavLinks: { name: string, href: string }[] = [
-    // { name: "Home", href: "#home" },
+    { name: "Blog", href: "/blog" },
     // { name: "Education", href: "#education" },
     // { name: "About", href: "#about" },
     // { name: "Skills", href: "#skills" },
@@ -21,7 +21,7 @@ export function Navbar({ className = "" }: { className?: string }) {
     return (
         <header className={`bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b ${className}`}>
             <nav className="mx-auto max-w-[1400px] flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-                <Link href="#home" className="text-xl font-bold">
+                <Link href="/" className="text-xl font-bold">
                     Guillaume Dehez
                 </Link>
 
@@ -32,10 +32,10 @@ export function Navbar({ className = "" }: { className?: string }) {
                             key={link.name}
                             href={link.href}
                             className="text-sm font-medium transition-colors hover:text-primary"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                            }}
+                        // onClick={(e) => {
+                        //     e.preventDefault();
+                        //     document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                        // }}
                         >
                             {link.name}
                         </Link>
@@ -61,9 +61,9 @@ export function Navbar({ className = "" }: { className?: string }) {
                                 key={link.name}
                                 href={link.href}
                                 className="text-lg font-medium py-2 transition-colors hover:text-primary"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                                onClick={() => {
+                                    // e.preventDefault();
+                                    // document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
                                     setIsMenuOpen(false);
                                 }}
                             >
