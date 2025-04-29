@@ -3,10 +3,7 @@ title : "Mon Epomaker TH40 : l'aventure dont je ne savais pas que j'avais besoin
 date : 2025-04-29
 ---
 
-
-# Mon Epomaker TH40 : l'aventure dont je ne savais pas que j'avais besoin
-
-Soyons honnêtes : je passe plus de temps avec mon clavier qu'avec la plupart de mes amis. () Lorsque j'ai acheté l'Epomaker TH40, j'étais déjà amoureux de sa disposition compacte à 40 %. Mais, comme le savent tous les amateurs de claviers, l'amour véritable passe par la personnalisation. Voici donc les keycaps en céramique.
+Soyons honnêtes : je passe plus de temps avec mon clavier qu'avec la plupart de mes amis. (Désolé, chers amis. Vous n'avez pas de rétroéclairage RGB ni de beaux switchs.) Lorsque j'ai acheté l'Epomaker TH40, j'étais déjà amoureux de sa disposition compacte à 40 %. Mais, comme le savent tous les amateurs de claviers, l'amour véritable passe par la personnalisation. Voici donc les keycaps en céramique.
 
 ## Mon premier clavier à 40% : Où sont toutes les touches ?
 

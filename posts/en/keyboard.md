@@ -3,9 +3,6 @@ title: "My Epomaker TH40: The Adventure I Never Knew I Needed"
 date: 2025-04-29
 ---
 
-
-# My Epomaker TH40: The Adventure I Never Knew I Needed
-
 Let’s be honest: I spend more time with my keyboard than with most of my friends. (Sorry, friends. You don’t have RGB backlighting or nice switches.) So when I picked up the Epomaker TH40, I was already in love with its compact 40% layout. But, as any keyboard enthusiast knows, true love means customization. Enter: ceramic keycaps.
 
 ## My First 40% Keyboard: Where Are All the Keys?!
