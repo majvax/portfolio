@@ -3,10 +3,13 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypePrism from "rehype-prism-plus";
+import rehypeStringify from "rehype-stringify";
 
-const postsDirectory = path.join(process.cwd(), "posts");
 
-export function getSortedPostsData() {
+export function getSortedPostsData(lang: "en" | "fr") {
+    const postsDirectory = path.join(process.cwd(), "posts", lang);
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames.map((fileName) => {
         const id = fileName.replace(/\.md$/, "");
@@ -23,19 +26,23 @@ export function getSortedPostsData() {
     return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function getAllPostIds() {
+export function getAllPostIds(lang: "en" | "fr") {
+    const postsDirectory = path.join(process.cwd(), "posts", lang);
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
 }
 
-export async function getPostData(id: string) {
+export async function getPostData(id: string, lang: "en" | "fr") {
+    const postsDirectory = path.join(process.cwd(), "posts", lang);
     const fullPath = path.join(postsDirectory, `${id}.md`);
     if (!fs.existsSync(fullPath)) return null;
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const matterResult = matter(fileContents);
 
     const processedContent = await remark()
-        .use(html)
+        .use(remarkRehype)
+        .use(rehypePrism, { showLineNumbers: true })
+        .use(rehypeStringify)
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 

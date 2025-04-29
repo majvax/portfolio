@@ -5,8 +5,15 @@ import Image from "next/image"
 import { Github, Linkedin, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { heroTranslations } from "@/utils/translations"
 
-export function HeroSection() {
+
+type HeroSectionProps = {
+    currentLang: "en" | "fr";
+}
+
+export function HeroSection({ currentLang }: HeroSectionProps) {
+    const t = heroTranslations[currentLang];
     return (
         <section id="home" className="h-screen w-full flex items-center pt-16">
             <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 w-full">
@@ -19,14 +26,14 @@ export function HeroSection() {
                         className="flex flex-col items-center md:items-start"
                     >
                         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-center md:text-left">
-                            Guillaume Dehez
+                            {t.title}
                         </h1>
                         <p className="mt-4 text-xl md:text-2xl text-muted-foreground text-center md:text-left">
-                            Etudiant en Ingénierie & Aspirant Rétro-ingénieur
+                            {t.subtitle}
                         </p>
 
                         <p className="mt-4 text-lg text-muted-foreground max-w-[600px] text-center md:text-left">
-                            Je suis un étudiant en première année d&apos;ingénierie de 18 ans avec une passion pour le développement de logiciels et la cybersécurité. Je me spécialise en programmation C++ et vise à poursuivre une carrière en reverse engineering.
+                            {t.description}
                         </p>
 
                         <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
