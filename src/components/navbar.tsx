@@ -9,12 +9,6 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 
 const NavLinks: { name: string, href: string }[] = [
     { name: "Blog", href: "/blog" },
-    // { name: "Education", href: "#education" },
-    // { name: "About", href: "#about" },
-    // { name: "Skills", href: "#skills" },
-    // { name: "Projects", href: "#projects" },
-    // { name: "Experience", href: "#experience" },
-    // { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar({ className, currentLang }: { className: string; currentLang: "en" | "fr"; }) {
