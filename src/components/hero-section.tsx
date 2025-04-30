@@ -49,12 +49,12 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                                     LinkedIn
                                 </Button>
                             </Link>
-                            <Link href="/cv.pdf" target="_blank">
+                            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
                                 <Button variant="default" size="lg" className="gap-2">
                                     <FileText className="h-5 w-5" />
                                     Resume
                                 </Button>
-                            </Link>
+                            </a>
                         </div>
                     </motion.div>
 
@@ -66,7 +66,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                         className="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-2xl border-4 border-primary/20 shadow-xl"
                     >
                         <Image
-                            src="photo.jpg"
+                            src="/photo.jpg"
                             alt="Guillaume Dehez"
                             fill
                             style={{ objectFit: "cover" }}

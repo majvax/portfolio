@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Menu } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageSwitcher } from "./language-switch"
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 
 const NavLinks: { name: string, href: string }[] = [
     { name: "Blog", href: "/blog" },
@@ -36,8 +36,8 @@ export function Navbar({ className, currentLang }: { className: string; currentL
                     <LanguageSwitcher currentLang={currentLang} />
                     <ThemeToggle />
                 </div>
-    
-                
+
+
                 <div className="md:hidden">
                     <Sheet open={open} onOpenChange={setOpen}>
                         <SheetTrigger asChild>
@@ -47,8 +47,11 @@ export function Navbar({ className, currentLang }: { className: string; currentL
                         </SheetTrigger>
                         <SheetContent side="left" className="p-0 flex flex-col h-full">
                             <SheetTitle className="sr-only">Main navigation</SheetTitle>
+                            <SheetDescription className="sr-only">
+                                Navigation menu for mobile devices
+                            </SheetDescription>
                             <div className="flex flex-col flex-1 justify-start items-stretch pt-8 px-8 gap-6">
-                                <Link 
+                                <Link
                                     key="Home"
                                     href={`/${currentLang}`}
                                     className="text-2xl font-semibold py-2 hover:underline"
