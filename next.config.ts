@@ -9,7 +9,9 @@ const nextConfig: NextConfig = {
     images: {
         unoptimized: true,
     },
-
+    experimental: {
+        inlineCss: true,
+    },
 };
 
 export default nextConfig
