@@ -4,9 +4,34 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
-import rehypeMermaid from "rehype-mermaid";
 import rehypePrism from "rehype-prism-plus";
 import rehypeStringify from "rehype-stringify";
+import { visit } from "unist-util-visit";
+import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
+import type { Root, Element, ElementContent } from "hast";
+
+const cachePath = path.join(process.cwd(), ".mermaid-cache.json");
+const mermaidCache: Record<string, string> = fs.existsSync(cachePath)
+    ? JSON.parse(fs.readFileSync(cachePath, "utf8"))
+    : {};
+
+function rehypeMermaidFromCache() {
+    return (tree: Root) => {
+        visit(tree, "element", (node: Element, index, parent) => {
+            if (node.tagName !== "pre" || !parent || index === undefined) return;
+            const code = node.children[0];
+            if (code?.type !== "element" || code.tagName !== "code") return;
+            const className = code.properties?.className as string[] | undefined;
+            if (!className?.includes("language-mermaid")) return;
+            const text = code.children[0];
+            if (text?.type !== "text") return;
+            const svg = mermaidCache[text.value.trim()];
+            if (!svg) return;
+            const parsed = fromHtmlIsomorphic(svg, { fragment: true });
+            parent.children.splice(index, 1, ...(parsed.children as ElementContent[]));
+        });
+    };
+}
 
 
 export function getSortedPostsData(lang: "en" | "fr") {
@@ -43,7 +68,7 @@ export async function getPostData(id: string, lang: "en" | "fr") {
     const processedContent = await remark()
         .use(remarkGfm)
         .use(remarkRehype)
-        .use(rehypeMermaid)
+        .use(rehypeMermaidFromCache)
         .use(rehypePrism, { showLineNumbers: true, defaultLanguage: "text" })
         .use(rehypeStringify)
         .process(matterResult.content);

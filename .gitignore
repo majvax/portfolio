@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# mermaid pre-build cache
+/.mermaid-cache.json
+
 # production
 /build
 
