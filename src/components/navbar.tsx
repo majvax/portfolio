@@ -71,7 +71,7 @@ export function Navbar({ className, currentLang }: { className: string; currentL
                                 ))}
                             </div>
                             <div className="mt-auto flex flex-row gap-4 p-8 border-t">
-                                <ThemeToggle />
+                                <ThemeToggle onSelect={() => setOpen(false)} />
                                 <LanguageSwitcher currentLang={currentLang} onSelect={() => setOpen(false)} />
                             </div>
                         </SheetContent>

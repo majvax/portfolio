@@ -2,14 +2,19 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { SITE_URL, THEME_COLOR } from "@/lib/seo"
+import { buildMetadata, SITE_URL, THEME_COLOR } from "@/lib/seo"
+import { seoTranslations } from "@/utils/translations"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
-    title: "Guillaume Dehez - Portfolio",
-    description: "Personal portfolio of Guillaume Dehez - Software Engineer",
+    ...buildMetadata({
+        lang: "en",
+        path: "",
+        title: seoTranslations.en.home.title,
+        description: seoTranslations.en.home.description,
+    }),
 }
 
 export const viewport = {

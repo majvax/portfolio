@@ -1,10 +1,7 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
 import { Github, Linkedin, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { motion, useReducedMotion } from "framer-motion"
 import { heroTranslations } from "@/utils/translations"
 
 
@@ -14,18 +11,12 @@ type HeroSectionProps = {
 
 export function HeroSection({ currentLang }: HeroSectionProps) {
     const t = heroTranslations[currentLang];
-    const reduce = useReducedMotion();
     return (
         <section id="home" className="h-screen w-full flex items-center pt-16">
             <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 w-full">
                 <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-16">
                     {/* Text Content - Left */}
-                    <motion.div
-                        initial={reduce ? false : { opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="flex flex-col items-center md:items-start"
-                    >
+                    <div className="animate-hero-fade-up flex flex-col items-center md:items-start">
                         <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl text-center md:text-left">
                             {t.title}
                         </h1>
@@ -57,15 +48,10 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                                 </Button>
                             </a>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Profile Picture - Right */}
-                    <motion.div
-                        initial={reduce ? false : { opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-2xl border-4 border-primary/20 shadow-xl"
-                    >
+                    <div className="animate-hero-fade-scale relative w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-2xl border-4 border-primary/20 shadow-xl">
                         <Image
                             src="/photo-hero.jpg"
                             alt="Guillaume Dehez"
@@ -74,7 +60,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                             sizes="(max-width: 768px) 224px, 288px"
                             priority
                         />
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
