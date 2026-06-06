@@ -151,6 +151,24 @@
 }
 
 
+.prose :where(code):not(:where(pre *)) {
+    font-weight: 400;
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: oklch(90% 0.01 114);
+    padding: 0.15em 0.4em;
+    border-radius: 0.3em;
+}
+
+.dark .prose :where(code):not(:where(pre *)) {
+    background-color: oklch(30% 0.01 114);
+}
+
+.prose :where(code):not(:where(pre *))::before,
+.prose :where(code):not(:where(pre *))::after {
+    content: none;
+}
+
 pre code {
     counter-reset: line;
   }
@@ -175,6 +193,49 @@ pre code {
     padding-right: 0.5em;
   }
   
+/* Mermaid diagrams */
+.prose svg.flowchart {
+    display: block;
+    margin: 1.5rem auto;
+}
+
+.dark .prose svg[id^="mermaid"] .node rect,
+.dark .prose svg[id^="mermaid"] .node circle,
+.dark .prose svg[id^="mermaid"] .node ellipse,
+.dark .prose svg[id^="mermaid"] .node polygon,
+.dark .prose svg[id^="mermaid"] .node path {
+    fill: oklch(22% 0.03 280) !important;
+    stroke: oklch(55% 0.15 280) !important;
+}
+
+.dark .prose svg[id^="mermaid"] .label text,
+.dark .prose svg[id^="mermaid"] .label span,
+.dark .prose svg[id^="mermaid"] .cluster-label text,
+.dark .prose svg[id^="mermaid"] .cluster-label span {
+    fill: #d4d4d4 !important;
+    color: #d4d4d4 !important;
+}
+
+.dark .prose svg[id^="mermaid"] .edgeLabel,
+.dark .prose svg[id^="mermaid"] .edgeLabel p,
+.dark .prose svg[id^="mermaid"] .edgeLabel rect,
+.dark .prose svg[id^="mermaid"] .labelBkg {
+    background-color: oklch(18% 0.01 114) !important;
+    fill: oklch(18% 0.01 114) !important;
+    color: #d4d4d4 !important;
+}
+
+.dark .prose svg[id^="mermaid"] .marker,
+.dark .prose svg[id^="mermaid"] .arrowheadPath {
+    fill: #9ca3af !important;
+    stroke: #9ca3af !important;
+}
+
+.dark .prose svg[id^="mermaid"] .edgePath .path,
+.dark .prose svg[id^="mermaid"] .flowchart-link {
+    stroke: #9ca3af !important;
+}
+
   /* Highlighted lines */
   .highlight-line {
     background: rgba(255, 255, 0, 0.15);
