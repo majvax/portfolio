@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { getSortedPostsData } from "@/lib/posts";
-import { blogTranslations } from "@/utils/translations";
+import { blogTranslations, seoTranslations } from "@/utils/translations";
+import { buildMetadata, dateLocale } from "@/lib/seo";
+import type { Metadata } from "next";
 
 export function generateStaticParams() {
     return [{ lang: 'en' }, { lang: 'fr' }];
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: "en" | "fr" }> }): Promise<Metadata> {
+    const { lang } = await params;
+    const t = seoTranslations[lang].blog;
+    return buildMetadata({ lang, path: "/blog", title: t.title, description: t.description });
 }
 
 
@@ -21,7 +29,7 @@ export default async function BlogPage({params}: { params: Promise<{ lang: "en" 
                 {t.intro}
             </p>
             <ul className="space-y-6">
-                {allPostsData.map(({ id, title, date }) => (
+                {allPostsData.map(({ id, title, date, description, readingTime }) => (
                     <li key={id} className="border-t-2 pt-4">
                         <Link
                             href={`/${lang}/blog/${id}`}
@@ -29,13 +37,20 @@ export default async function BlogPage({params}: { params: Promise<{ lang: "en" 
                         >
                             {title}
                         </Link>
-                        <div className="text-sm text-muted-foreground">
-                            {new Date(date).toLocaleDateString(lang, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric"
-                            })}
+                        <div className="text-sm text-muted-foreground flex flex-wrap gap-x-2">
+                            <span>
+                                {new Date(date).toLocaleDateString(dateLocale(lang), {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric"
+                                })}
+                            </span>
+                            <span aria-hidden="true">·</span>
+                            <span>{t.minRead(readingTime)}</span>
                         </div>
+                        <p className="text-sm text-muted-foreground mt-2">
+                            {description}
+                        </p>
                     </li>
                 ))}
             </ul>

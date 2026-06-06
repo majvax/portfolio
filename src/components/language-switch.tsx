@@ -1,3 +1,5 @@
+"use client"
+
 import { Languages } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -10,9 +12,19 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 const SUPPORTED_LANGS = ["en", "fr"] as const
+export const PREFERRED_LANG_KEY = "preferred-lang"
 
-export function LanguageSwitcher({ currentLang }: { currentLang: "en" | "fr" }) {
+export function LanguageSwitcher({ currentLang, onSelect }: { currentLang: "en" | "fr"; onSelect?: () => void }) {
     const pathname = usePathname()
+
+    const handleClick = (lang: string) => {
+        try {
+            localStorage.setItem(PREFERRED_LANG_KEY, lang)
+        } catch {
+            // localStorage may be unavailable (private mode, etc.) — ignore
+        }
+        onSelect?.()
+    }
 
     return (
         <DropdownMenu>
@@ -28,6 +40,8 @@ export function LanguageSwitcher({ currentLang }: { currentLang: "en" | "fr" }) 
                         <Link
                             href={pathname.replace(/^\/[a-z]{2}/, `/${lang}`)}
                             aria-current={lang === currentLang ? "page" : undefined}
+                            aria-label={`Switch to ${lang === "en" ? "English" : "French"}`}
+                            onClick={() => handleClick(lang)}
                         >
                             {lang.toUpperCase()}
                         </Link>

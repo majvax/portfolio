@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Github, Linkedin, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { heroTranslations } from "@/utils/translations"
 
 
@@ -14,13 +14,14 @@ type HeroSectionProps = {
 
 export function HeroSection({ currentLang }: HeroSectionProps) {
     const t = heroTranslations[currentLang];
+    const reduce = useReducedMotion();
     return (
         <section id="home" className="h-screen w-full flex items-center pt-16">
             <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 w-full">
                 <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8 md:gap-16">
                     {/* Text Content - Left */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={reduce ? false : { opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="flex flex-col items-center md:items-start"
@@ -37,13 +38,13 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                         </p>
 
                         <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
-                            <Link href="https://github.com/majvax" target="_blank">
+                            <Link href="https://github.com/majvax" target="_blank" rel="noopener noreferrer">
                                 <Button variant="outline" size="lg" className="gap-2">
                                     <Github className="h-5 w-5" />
                                     Github
                                 </Button>
                             </Link>
-                            <Link href="https://www.linkedin.com/in/guillaume-dehez/" target="_blank">
+                            <Link href="https://www.linkedin.com/in/guillaume-dehez/" target="_blank" rel="noopener noreferrer">
                                 <Button variant="outline" size="lg" className="gap-2">
                                     <Linkedin className="h-5 w-5" />
                                     LinkedIn
@@ -60,13 +61,13 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
 
                     {/* Profile Picture - Right */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={reduce ? false : { opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.5 }}
                         className="relative w-56 h-56 md:w-72 md:h-72 overflow-hidden rounded-2xl border-4 border-primary/20 shadow-xl"
                     >
                         <Image
-                            src="/photo.jpg"
+                            src="/photo-hero.jpg"
                             alt="Guillaume Dehez"
                             fill
                             style={{ objectFit: "cover" }}

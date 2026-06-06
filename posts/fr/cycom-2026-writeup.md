@@ -3,8 +3,6 @@ title : "CYCOM 2026, reverse engineering write up"
 date : 2026-06-06
 ---
 
-# CYCOM CTF - Writeup reverse
-
 ## Contexte
 
 Un employé branche son téléphone à son poste, met à jour Linux depuis un Wi‑Fi

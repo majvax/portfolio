@@ -3,8 +3,6 @@ title : "CYCOM 2026, reverse engineering write up"
 date : 2026-06-06
 ---
 
-# CYCOM CTF - Reverse Engineering Writeup
-
 ## Context
 
 An employee plugs their phone into their workstation, updates Linux over a public
