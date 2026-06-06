@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
     output: 'export',
-    serverExternalPackages: ["mermaid-isomorphic", "playwright"],
+    serverExternalPackages: ["rehype-mermaid", "mermaid-isomorphic", "playwright"],
     // add the name of the repository so that the static files are served from the correct path
     // shouldn't be necessary now that I'm using a custom domain
     // basePath: '/portfolio',

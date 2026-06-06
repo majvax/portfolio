@@ -197,6 +197,7 @@ pre code {
 .prose svg.flowchart {
     display: block;
     margin: 1.5rem auto;
+    background: transparent !important;
 }
 
 .dark .prose svg[id^="mermaid"] .node rect,

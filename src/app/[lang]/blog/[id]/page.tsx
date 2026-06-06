@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
     const SUPPORTED_LANGS = ["en", "fr"] as const;
- 
+
     return SUPPORTED_LANGS.flatMap(lang =>
         getAllPostIds(lang).map(id => ({ lang, id }))
     );
